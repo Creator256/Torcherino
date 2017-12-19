@@ -1,0 +1,7 @@
+{
+  "conditions": {
+    "compressed" : "com.sci.torcherino.conditions.CompressedCondition",
+    "double" : "com.sci.torcherino.conditions.DoubleCondition",
+    "overpowered" : "com.sci.torcherino.conditions.OverpoweredCondition"
+  }
+}

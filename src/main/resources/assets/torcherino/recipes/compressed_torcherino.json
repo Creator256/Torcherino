@@ -1,0 +1,40 @@
+{
+	"conditions":[
+		{
+			"type" : "compressed"
+		}
+	],
+	"result":{
+		"item": "compressed_torcherino"
+	},
+	"type": "forge:ore_shapeless",
+	"ingredients":[
+		{
+			"item":"torcherino"
+		},
+		{
+			"item":"torcherino"
+		},
+		{
+			"item":"torcherino"
+		},
+		{
+			"item":"torcherino"
+		},
+		{
+			"item":"torcherino"
+		},
+		{
+			"item":"torcherino"
+		},
+		{
+			"item":"torcherino"
+		},		
+		{
+			"item":"torcherino"
+		},		
+		{
+			"item":"torcherino"
+		}
+	]
+}

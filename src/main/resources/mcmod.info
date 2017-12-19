@@ -4,7 +4,7 @@
   "name": "Torcherino",
   "description": "Simple mod that adds OP torches.",
   "version": "${version}",
-  "mcversion": "${minecraft_version}",
+  "mcversion": "${mcversion}",
   "url": "http://minecraft.curseforge.com/projects/torcherino",
   "updateUrl": "",
   "authorList": ["Moze_Intel", "sci4me"],

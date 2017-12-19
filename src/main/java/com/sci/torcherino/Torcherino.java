@@ -1,7 +1,6 @@
 package com.sci.torcherino;
 
 import com.sci.torcherino.init.ModBlocks;
-import com.sci.torcherino.init.ModRecipes;
 import com.sci.torcherino.proxy.CommonProxy;
 import com.sci.torcherino.tile.TileCompressedTorcherino;
 import com.sci.torcherino.tile.TileDoubleCompressedTorcherino;
@@ -18,8 +17,9 @@ import net.minecraftforge.fml.common.event.*;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
+import java.util.HashMap;
 
-@Mod(modid = "torcherino", name = "Torcherino", version = "@VERSION@")
+@Mod(modid = "torcherino", name = "Torcherino", version = "1.12.2")
 public final class Torcherino {
     private static Torcherino instance;
 
@@ -35,9 +35,11 @@ public final class Torcherino {
     public static CommonProxy proxy;
 
     public static boolean logPlacement;
-    public static boolean overPoweredRecipe;
+    public static boolean overPoweredRecipe = true;
     public static boolean compressedTorcherino;
     public static boolean doubleCompressedTorcherino;
+    
+    public static HashMap<String, Boolean> manual_bool = new HashMap<String, Boolean>();
 
     private String[] blacklistedBlocks;
     private String[] blacklistedTiles;
@@ -58,10 +60,9 @@ public final class Torcherino {
             cfg.load();
 
             Torcherino.logPlacement = cfg.getBoolean("logPlacement", "general", false, "(For Server Owners) Is it logged when someone places a Torcherino?");
-            Torcherino.overPoweredRecipe = cfg.getBoolean("overPoweredRecipe", "general", true, "Is the recipe for Torcherino extremely OP?");
+            //Torcherino.overPoweredRecipe = cfg.getBoolean("overPoweredRecipe", "general", true, "Is the recipe for Torcherino extremely OP?");
             Torcherino.compressedTorcherino = cfg.getBoolean("compressedTorcherino", "general", false, "Is the recipe for the Compressed Torcherino enabled?");
             Torcherino.doubleCompressedTorcherino = cfg.getBoolean("doubleCompressedTorcherino", "general", false, "Is the recipe for the Double Compressed Torcherino enabled? Only takes effect if Compressed Torcherinos are enabled.");
-
             this.blacklistedBlocks = cfg.getStringList("blacklistedBlocks", "blacklist", new String[]{}, "modid:unlocalized");
             this.blacklistedTiles = cfg.getStringList("blacklistedTiles", "blacklist", new String[]{}, "Fully qualified class name");
         } finally {
@@ -70,9 +71,8 @@ public final class Torcherino {
         }
 
         ModBlocks.init();
-        ModRecipes.init();
 
-        Torcherino.proxy.preInit();
+        Torcherino.proxy.preInit(evt);
     }
 
     @Mod.EventHandler
@@ -93,7 +93,7 @@ public final class Torcherino {
         TorcherinoRegistry.blacklistBlock(Blocks.LAVA);
         TorcherinoRegistry.blacklistBlock(Blocks.FLOWING_LAVA);
 
-        Torcherino.proxy.init();
+        Torcherino.proxy.init(evt);
     }
 
     @Mod.EventHandler
@@ -104,13 +104,15 @@ public final class Torcherino {
         for (final String tile : this.blacklistedTiles)
             this.blacklistTile(tile);
 
-        Torcherino.proxy.postInit();
+        Torcherino.proxy.postInit(evt);
     }
 
+    /*
     @Mod.EventHandler
     public void missingMapping(final FMLMissingMappingsEvent event) {
         ModBlocks.handleMissingMappings(event);
     }
+    */
 
     @Mod.EventHandler
     public void imcMessage(final FMLInterModComms.IMCEvent evt) {

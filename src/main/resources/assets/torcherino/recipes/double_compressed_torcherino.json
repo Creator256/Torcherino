@@ -1,0 +1,40 @@
+{
+	"conditions":[
+		{
+			"type":"double"
+		}
+	],
+	"result":{
+		"item": "double_compressed_torcherino"
+	},
+	"type": "forge:ore_shapeless",
+	"ingredients":[
+		{
+			"item":"compressed_torcherino"
+		},
+		{
+			"item":"compressed_torcherino"
+		},
+		{
+			"item":"compressed_torcherino"
+		},
+		{
+			"item":"compressed_torcherino"
+		},		
+		{
+			"item":"compressed_torcherino"
+		},		
+		{
+			"item":"compressed_torcherino"
+		},		
+		{
+			"item":"compressed_torcherino"
+		},		
+		{
+			"item":"compressed_torcherino"
+		},		
+		{
+			"item":"compressed_torcherino"
+		}
+	]
+}

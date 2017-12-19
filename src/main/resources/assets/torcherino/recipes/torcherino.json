@@ -1,0 +1,24 @@
+{
+	"conditions":[
+		{
+			"type" : "overpowered"
+		}
+	],
+	"result":{
+		"item": "torcherino"
+	},
+	"pattern":[
+		" C ",
+		"CTC",
+		" C "
+	],
+	"type": "forge:ore_shaped",
+	"key": {
+		"C":{
+			"item" : "minecraft:clock"
+		},
+		"T":{
+			"item" : "minecraft:torch"	
+		}
+	}
+}

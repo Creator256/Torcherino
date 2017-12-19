@@ -1,18 +1,5 @@
 package com.sci.torcherino.proxy;
 
-public final class ServerProxy extends CommonProxy {
-    @Override
-    public void preInit() {
+public class ServerProxy extends CommonProxy {
 
-    }
-
-    @Override
-    public void init() {
-
-    }
-
-    @Override
-    public void postInit() {
-
-    }
 }
